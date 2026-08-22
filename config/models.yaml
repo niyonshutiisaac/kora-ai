@@ -1,0 +1,106 @@
+# Kora model registry.
+# Free models only. Add or edit entries freely - Kora loads this at startup.
+# Provider kinds: openai_compat (OpenAI-compatible /v1 API) | gemini
+
+providers:
+  ollama:
+    kind: openai_compat
+    base_url_env: OLLAMA_BASE_URL
+    default_base_url: http://localhost:11434/v1
+    api_key_env: null
+    local: true
+    free: true
+    description: "Local models, no API key, fully offline."
+    models:
+      - id: qwen2.5-coder:7b
+        name: Qwen2.5 Coder 7B
+        context: 32768
+        notes: Best local coding model in this size class.
+      - id: deepseek-coder:6.7b
+        name: DeepSeek Coder 6.7B
+        context: 16384
+      - id: llama3.1:8b
+        name: Llama 3.1 8B
+        context: 131072
+      - id: mistral
+        name: Mistral 7B
+        context: 32768
+
+  groq:
+    kind: openai_compat
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    local: false
+    free: true
+    description: "Groq free tier - extremely fast inference."
+    models:
+      - id: llama-3.3-70b-versatile
+        name: Llama 3.3 70B Versatile
+        context: 131072
+      - id: llama-3.1-8b-instant
+        name: Llama 3.1 8B Instant
+        context: 131072
+
+  openrouter:
+    kind: openai_compat
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    local: false
+    free: true
+    description: "OpenRouter free-tier models (:free suffix)."
+    models:
+      - id: deepseek/deepseek-chat-v3-0324:free
+        name: DeepSeek V3 (free)
+        context: 65536
+      - id: qwen/qwen-2.5-coder-32b-instruct:free
+        name: Qwen2.5 Coder 32B (free)
+        context: 32768
+      - id: meta-llama/llama-3.3-70b-instruct:free
+        name: Llama 3.3 70B (free)
+        context: 131072
+
+  gemini:
+    kind: gemini
+    base_url: https://generativelanguage.googleapis.com/v1beta
+    api_key_env: GEMINI_API_KEY
+    local: false
+    free: true
+    description: "Google Gemini free tier."
+    models:
+      - id: gemini-3.7-flash
+        name: Gemini 3.7 Flash
+        context: 1048576
+      - id: gemini-3.5-flash
+        name: Gemini 3.5 Flash
+        context: 1048576
+      - id: gemini-3.6-flash
+        name: Gemini 3.6 Flash
+        context: 1048576
+
+  nvidia:
+    kind: openai_compat
+    base_url: https://integrate.api.nvidia.com/v1
+    api_key_env: NVIDIA_API_KEY
+    local: false
+    free: true
+    dynamic_models: true
+    description: "NVIDIA NIM free tier - full live catalog, no credit card. Key: nvapi-..."
+    models:
+      - id: deepseek-ai/deepseek-v4-flash-0731
+        name: DeepSeek V4 Flash
+        context: 1048576
+        notes: Fast MoE built for coding and agents.
+      - id: moonshotai/kimi-k2.6
+        name: Kimi K2.6
+        context: 131072
+        notes: Strong agentic coding model.
+      - id: nvidia/llama-3.3-nemotron-super-49b-v1.5
+        name: Llama 3.3 Nemotron Super 49B
+        context: 131072
+        notes: NVIDIA-tuned reasoning/tool-use.
+      - id: meta/llama-3.3-70b-instruct
+        name: Llama 3.3 70B Instruct
+        context: 131072
+      - id: openai/gpt-oss-120b
+        name: GPT-OSS 120B
+        context: 131072

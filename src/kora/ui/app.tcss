@@ -1,0 +1,90 @@
+# Kora TUI - dark theme layout
+Screen {
+    background: $background;
+}
+
+#main_area {
+    height: 1fr;
+}
+
+#left_panel {
+    width: 28%;
+    min-width: 24;
+    border-right: solid $panel;
+    padding: 0 1;
+    background: $surface;
+}
+
+#center_panel {
+    width: 1fr;
+    padding: 0 1;
+}
+
+#right_panel {
+    width: 34%;
+    min-width: 30;
+    border-left: solid $panel;
+    background: $surface;
+    display: none;
+}
+
+#right_panel.visible {
+    display: block;
+}
+
+#chat_scroll {
+    height: 1fr;
+    scrollbar-background: $surface;
+    scrollbar-color: $secondary;
+}
+
+.user_msg {
+    margin: 0 0 1 0;
+    padding: 0 1;
+    border-left: thick $primary;
+    background: $boost;
+}
+
+.assistant_msg {
+    margin: 0 0 1 0;
+    padding: 0 1;
+    border-left: thick $accent;
+}
+
+.tool_msg {
+    color: $text-muted;
+    margin-bottom: 1;
+}
+
+.error_msg {
+    color: $error;
+}
+
+.summary_box {
+    border: round $success;
+    margin-bottom: 1;
+    padding: 0 1;
+}
+
+#status_bar {
+    dock: top;
+    height: auto;
+    background: $panel;
+    color: $text;
+    padding: 0 2;
+}
+
+#input_row {
+    dock: bottom;
+    height: auto;
+    margin: 0;
+}
+
+#command_input {
+    border: tall $primary;
+    background: $surface;
+}
+
+#command_input:focus {
+    border: tall $accent;
+}

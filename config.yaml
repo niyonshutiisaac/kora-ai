@@ -1,0 +1,36 @@
+# Kora main configuration.
+# A user-level copy lives at ~/.config/kora/config.yaml and takes precedence.
+
+# Default model selection (persists when you switch via /model)
+default_provider: ollama
+default_model: qwen2.5-coder:7b
+
+# Language: auto | en | rw
+language: auto
+
+# Safety level: normal | cautious | yolo
+#   normal   - safe commands auto-run, moderate need "y", destructive need "yes"
+#   cautious - everything except read-only needs confirmation
+#   yolo     - only destructive commands need typed confirmation
+safety_level: normal
+
+# Project root (defaults to the directory kora was started in)
+project_root: null
+
+# Allow running shell commands outside the project root (dangerous)
+allow_outside_root: false
+
+# Self-modification mode: let Kora edit its own source code
+self_modification: false
+
+# Ask before applying file edits (shows a unified diff)
+confirm_edits: true
+
+# Default command timeout in seconds
+command_timeout: 120
+
+# Maximum agent iterations per instruction
+max_iterations: 40
+
+# UI theme
+theme: dark
